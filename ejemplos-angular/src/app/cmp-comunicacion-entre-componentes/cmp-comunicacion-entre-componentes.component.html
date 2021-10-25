@@ -1,0 +1,16 @@
+<h2>Comunicación entre componentes (@Input/@Output)</h2>
+<app-sugus sabor="piña" color="blue"></app-sugus>
+<app-sugus sabor="naranja" [color]="blue"></app-sugus>
+<app-sugus></app-sugus>
+<!--
+<input type="text">
+<input type="number">
+<input type="color"> -->
+
+<app-hijo
+  [nombre]="nombreHijo"
+  (nombreCambiado)="actualizarNombreHijo($event)"></app-hijo>
+
+<app-hija
+  [nombre]="nombreHija"
+  [nombreHermano]="nombreHijo"></app-hija>

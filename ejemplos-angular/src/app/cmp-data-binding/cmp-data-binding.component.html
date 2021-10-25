@@ -1,0 +1,23 @@
+<h2>Data Binding</h2>
+
+<h3>String Interpolation</h3>
+<p>Me llamo {{nombre}}</p>
+<p>Hola {{nombre ? nombre : 'mundo'}}</p>
+<p>Hola {{getNombre()}}</p>
+
+<h3>Property Binding</h3>
+<button [disabled]="botonDeshabilitado">Un botón</button>
+<a [href]="url">Navegar a ...</a>
+<!-- <a href="{{url}}">Navegar a ...</a> -->
+<img src="" alt="Imagen de {{nombre}}">
+
+<h3>Event Binding</h3>
+<button (click)="toggleDisabled()">Habilitar/Deshabilitar el otro botón</button>
+<!-- dblclick, input, change, keyup, keydown, mouseenter, mouseleave, mousein, mouseout, copy, paste, touchstart, touchmove -->
+<input type="text" (change)="mostrarElValor($event)">
+
+<h3>Two Way Binding</h3>
+<input type="text" [(ngModel)]="nombre">
+
+<h3>Custom ngModel</h3>
+<input type="text" [value]="nombre" (input)="actualizaNombre($event)">
