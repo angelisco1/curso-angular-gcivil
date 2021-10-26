@@ -1,0 +1,47 @@
+<h2>Directivas</h2>
+
+<h3>De atributo</h3>
+<p [ngStyle]="{backgroundColor: 'black', color: color}">El fondo es negro y la letra amarilla</p>
+<p [ngClass]="{letraAzul: true, tachada: tacharLetra}">La letra es azul y está tachada</p>
+<input type="text" [(ngModel)]="color">
+
+<p appMarcar>Pasa el ratón por encima para marcar el texto</p>
+<p appMarcar="blue">Pasa el ratón por encima para marcar el texto</p>
+
+<h3>Estructurales</h3>
+
+<button type="button" (click)="toggleDarkMode()">Activar/Desactivar dark mode</button>
+
+<!-- <p *ngIf="darkMode">Dark mode 🌜 activado</p>
+<p *ngIf="!darkMode">Light mode ☀️ activado</p> -->
+
+<!-- <p *ngIf="darkMode; else elseDarkMode">Dark mode 🌜 activado</p>
+<ng-template #elseDarkMode>
+  <p>Light mode ☀️ activado</p>
+</ng-template> -->
+
+<div *ngIf="darkMode; then ifDarkMode else elseDarkMode"></div>
+<ng-template #ifDarkMode>
+  <p>Dark mode 🌜 activado</p>
+</ng-template>
+<ng-template #elseDarkMode>
+  <p>Light mode ☀️ activado</p>
+</ng-template>
+
+<ul>
+  <li *ngFor="let c of colores; let pos = index; let esUltimo = last">
+    {{pos}}: {{c}}
+    <hr *ngIf="esUltimo">
+  </li>
+</ul>
+<!-- even, odd, first -->
+
+<ng-container [ngSwitch]="color">
+  <ng-container *ngFor="let c of colores">
+    <p *ngSwitchCase="c">La letra es {{c}}</p>
+  </ng-container>
+  <!-- <p *ngSwitchCase="'azul'">La letra es azul</p>
+  <p *ngSwitchCase="'amarillo'">La letra es amarilla</p>
+  <p *ngSwitchCase="'verde'">La letra es verde</p> -->
+  <p *ngSwitchDefault>Es de otro color</p>
+</ng-container>

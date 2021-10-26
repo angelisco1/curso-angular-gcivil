@@ -1,0 +1,48 @@
+<h2>Pipes</h2>
+
+<div>
+  <!-- uppercase, lowercase -->
+  <h4>{{producto.nombre | titlecase}}</h4>
+  <p>{{producto.descripcion | slice:0:100}}...</p>
+  <p>Precio: {{producto.precio | currency:'EUR' }}</p>
+  <p>Fecha de salida: {{producto.fechaDeSalida | date:'dd/MM/yyyy'}}</p>
+</div>
+
+<div>
+  <h4>{{producto.nombre}}</h4>
+  <p>{{producto.descripcion}}</p>
+  <p>Precio: {{producto.precio}}</p>
+  <p>Fecha de salida: {{producto.fechaDeSalida}}</p>
+</div>
+
+<pre>{{producto | json}}</pre>
+<!-- JSON.stringify(producto) -->
+
+<input type="text" (change)="addTarea($event)">
+<ul>
+  <li *ngFor="let t of tareas">
+    {{t.titulo}}
+  </li>
+</ul>
+
+<input type="text" [(ngModel)]="textoFiltro">
+<ul>
+  <li *ngFor="let t of tareas | filtro:textoFiltro">
+    {{t.titulo}}
+  </li>
+</ul>
+
+
+
+
+
+<p>{{100 | doble:5}}</p>
+<p>{{100 | doble}}</p>
+
+<ul>
+  <li *ngFor="let u of usuarios">{{u.name}}</li>
+</ul>
+
+<ul>
+  <li *ngFor="let u of promesaUsuarios | async">{{u.name}}</li>
+</ul>

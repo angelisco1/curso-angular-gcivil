@@ -9,6 +9,11 @@ import { CmpComunicacionEntreComponentesComponent } from './cmp-comunicacion-ent
 import { SugusComponent } from './cmp-comunicacion-entre-componentes/sugus/sugus.component';
 import { HijoComponent } from './cmp-comunicacion-entre-componentes/hijo/hijo.component';
 import { HijaComponent } from './cmp-comunicacion-entre-componentes/hija/hija.component';
+import { CmpDirectivasComponent } from './cmp-directivas/cmp-directivas.component';
+import { MarcarDirective } from './cmp-directivas/marcar.directive';
+import { CmpPipesComponent } from './cmp-pipes/cmp-pipes.component';
+import { FiltroPipe } from './cmp-pipes/filtro.pipe';
+import { DoblePipe } from './cmp-pipes/doble.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,12 @@ import { HijaComponent } from './cmp-comunicacion-entre-componentes/hija/hija.co
     CmpComunicacionEntreComponentesComponent,
     SugusComponent,
     HijoComponent,
-    HijaComponent
+    HijaComponent,
+    CmpDirectivasComponent,
+    MarcarDirective,
+    CmpPipesComponent,
+    FiltroPipe,
+    DoblePipe
   ],
   imports: [
     BrowserModule,

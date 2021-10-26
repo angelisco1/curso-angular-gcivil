@@ -11,10 +11,11 @@ export class CmpDataBindingComponent implements OnInit {
   // nombre: string | null = null;
   // string, number, boolean, any, Array<number>, string[], null, void
 
-  botonDeshabilitado: boolean = true;
+  botonDeshabilitado: boolean = false;
   url: string = 'http://www.google.es'
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
@@ -28,6 +29,7 @@ export class CmpDataBindingComponent implements OnInit {
   }
 
   mostrarElValor(event: any) {
+    console.log({event})
     console.log(event.target.value)
   }
 
