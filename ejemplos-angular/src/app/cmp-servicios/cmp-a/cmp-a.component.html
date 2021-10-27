@@ -1,0 +1,9 @@
+<h3>Cmp A</h3>
+
+<input type="text" (change)="nuevoMensaje($event)">
+
+<ul>
+  <li *ngFor="let dato of datos">{{dato}}</li>
+</ul>
+
+<input type="text" (change)="emitirMensaje($event)">

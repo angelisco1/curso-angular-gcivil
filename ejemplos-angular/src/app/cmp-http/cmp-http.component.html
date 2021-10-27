@@ -1,0 +1,22 @@
+<h2>HTTP</h2>
+
+<button type="button" (click)="guardarSerie()">Crear GoT</button>
+
+<!-- <div *ngFor="let s of series">
+  <h3>{{s.titulo}}</h3>
+  <p>Finalizada: {{s.finalizada ? 'Si' : 'No'}}</p>
+</div> -->
+
+<app-serie
+  *ngFor="let s of series"
+  [serie]="s"
+  ></app-serie>
+
+<app-sugus
+  *ngFor="let s of sugus"
+  [sabor]="s.sabor"
+  [color]="s.color"
+  ></app-sugus>
+
+<!-- <input type="text">
+<input type="number"> -->
