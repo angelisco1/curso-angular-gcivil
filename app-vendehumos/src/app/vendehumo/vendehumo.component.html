@@ -1,0 +1,7 @@
+<div *ngIf="vendehumo">
+  <p>{{vendehumo.nombre}}</p>
+  <span *ngFor="let c of vendehumo.categorias">{{c}}</span>
+  <p>{{vendehumo.numVotos}}</p>
+  <button type="button" (click)="sumarVoto()">+</button>
+  <a [routerLink]="['/vendehumos', vendehumo.id]">Ver + info</a>
+</div>

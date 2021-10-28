@@ -1,4 +1,5 @@
 <div *ngIf="serie !== null">
   <h3>{{serie.titulo}}</h3>
   <p>Finalizada: {{serie.finalizada ? 'Si' : 'No'}}</p>
+  <button type="button" (click)="eliminar()">Eliminar</button>
 </div>

@@ -17,16 +17,27 @@ export class CmpHttpComponent implements OnInit {
   constructor(private seriesService: SeriesService) { }
 
   ngOnInit(): void {
-    this.seriesService.getSeries()
-      .subscribe((datos) => {
-        this.series = datos
-      })
+    // this.seriesService.getSeriesSinHTTPClient()
+    this.getDatosSeries()
   }
 
   guardarSerie() {
     this.seriesService.crearSerie()
       .subscribe((datos) => {
         console.log(datos)
+        console.log('id', datos.name)
+        this.getDatosSeries()
       })
+  }
+
+  getDatosSeries() {
+    this.seriesService.getSeries()
+      .subscribe((datos) => {
+        this.series = datos
+      })
+  }
+
+  actualizarArrSeries(serieId: string) {
+    this.series = this.series.filter(s => s.id !== serieId)
   }
 }

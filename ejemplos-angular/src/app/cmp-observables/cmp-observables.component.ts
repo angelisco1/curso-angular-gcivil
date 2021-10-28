@@ -40,8 +40,8 @@ export class CmpObservablesComponent implements OnInit {
       }, 2000)
 
       setTimeout(() => {
-        observer.complete()
-        // observer.error('Error 2')
+        // observer.complete()
+        observer.error('Error 2')
       }, 4000)
     })
 

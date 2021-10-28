@@ -10,6 +10,7 @@
 <app-serie
   *ngFor="let s of series"
   [serie]="s"
+  (serieEliminada)="actualizarArrSeries($event)"
   ></app-serie>
 
 <app-sugus

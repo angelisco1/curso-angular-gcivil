@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { SeriesService } from '../series.service';
 
 @Component({
   selector: 'app-serie',
@@ -7,11 +8,19 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SerieComponent implements OnInit {
   @Input() serie: any = null;
+  @Output() serieEliminada = new EventEmitter<string>()
 
-  constructor() { }
+  constructor(private seriesService: SeriesService) { }
 
   ngOnInit(): void {
     console.log(this.serie)
   }
 
+  eliminar() {
+    this.seriesService.deleteSerie(this.serie.id)
+      .subscribe((datos) => {
+        console.log(datos)
+        this.serieEliminada.emit(this.serie.id)
+      })
+  }
 }
