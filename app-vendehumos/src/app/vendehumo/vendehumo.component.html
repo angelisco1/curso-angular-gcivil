@@ -1,7 +1,16 @@
-<div *ngIf="vendehumo">
-  <p>{{vendehumo.nombre}}</p>
-  <span *ngFor="let c of vendehumo.categorias">{{c}}</span>
-  <p>{{vendehumo.numVotos}}</p>
-  <button type="button" (click)="sumarVoto()">+</button>
-  <a [routerLink]="['/vendehumos', vendehumo.id]">Ver + info</a>
+<div class="card" *ngIf="vendehumo">
+  <h5 class="card-header">{{vendehumo.nombre}}</h5>
+  <div class="card-body">
+    <p class="card-text">{{vendehumo.descripcion}}</p>
+
+    <span class="badge rounded-pill bg-light text-dark" *ngFor="let c of vendehumo.categorias">{{c}}</span>
+
+    <div class="d-flex justify-content-around">
+      <button type="button" class="btn btn-outline-warning" (click)="sumarVoto()">
+        Num. votos + <span class="badge bg-info">{{vendehumo.numVotos}}</span>
+      </button>
+      <a class="btn btn-outline-info" [routerLink]="['/vendehumos', vendehumo.id]">Ver + info</a>
+    </div>
+
+  </div>
 </div>

@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  urlfirebase: 'https://ejemplos-dc1c1.firebaseio.com/angulargcivil/angel/vh'
 };
 
 /*

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Vendehumo } from '../vendehumo';
+import { VendehumosService } from '../vendehumos.service';
 
 @Component({
   selector: 'app-home',
@@ -8,29 +9,21 @@ import { Vendehumo } from '../vendehumo';
 })
 export class HomeComponent implements OnInit {
   listaVendehumos: Array<Vendehumo> = []
-  constructor() { }
+  constructor(private vhService: VendehumosService) { }
 
   ngOnInit(): void {
-    // GET
-    this.listaVendehumos.push(new Vendehumo(
-        'Vendehumo 1',
-        'Descripción 1',
-        ['fb', 'twitter'],
-        ['apuestas'],
-        new Date(),
-        0,
-        'id1'
-      ))
-    this.listaVendehumos.push(new Vendehumo(
-        'Vendehumo 2',
-        'Descripción 2',
-        ['instagram', 'youtube'],
-        ['trading'],
-        new Date(),
-        2,
-        'id2'
-      ))
+    this.vhService.getVhs().subscribe((vendehumos: Array<Vendehumo>) => {
+      this.listaVendehumos = vendehumos;
+    })
+  }
 
+  actualizarVh(event: any) {
+    this.listaVendehumos = this.listaVendehumos.map(vh => {
+      if (vh.id === event.id) {
+        vh.numVotos = event.numVotos
+      }
+      return vh;
+    })
   }
 
 }

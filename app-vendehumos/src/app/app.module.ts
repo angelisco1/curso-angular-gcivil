@@ -4,17 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { RoutingModule } from './app.routes';
 import { HomeComponent } from './home/home.component';
-import { NuevoVendehumoComponent } from './nuevo-vendehumo/nuevo-vendehumo.component';
 import { Error404Component } from './error404/error404.component';
 import { VendehumoComponent } from './vendehumo/vendehumo.component';
-import { FormsModule } from '@angular/forms';
 import { DetalleVendehumoComponent } from './detalle-vendehumo/detalle-vendehumo.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NuevoVendehumoComponent,
     Error404Component,
     VendehumoComponent,
     DetalleVendehumoComponent
@@ -22,9 +21,11 @@ import { DetalleVendehumoComponent } from './detalle-vendehumo/detalle-vendehumo
   imports: [
     BrowserModule,
     RoutingModule,
-    FormsModule
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

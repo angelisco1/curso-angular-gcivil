@@ -2,13 +2,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { DetalleVendehumoComponent } from './detalle-vendehumo/detalle-vendehumo.component';
 import { Error404Component } from './error404/error404.component';
 import { HomeComponent } from './home/home.component';
-import { NuevoVendehumoComponent } from './nuevo-vendehumo/nuevo-vendehumo.component';
 
 const APP_ROUTES: Routes = [
   { path: 'vendehumos', component: HomeComponent, children: [
     { path: ':id', component: DetalleVendehumoComponent },
   ] },
-  { path: 'nuevo-vendehumo', component: NuevoVendehumoComponent },
+  // { path: 'nuevo-vendehumo', component: NuevoVendehumoComponent, canActivate: [AuthGuard] },
+
+
+  { path: 'nuevo-vendehumo', loadChildren: () => import('./modulo-lazy/modulo-lazy.module').then(module => module.ModuloLazyModule) },
+
+
   { path: '', redirectTo: 'vendehumos', pathMatch: 'full' },
   { path: '**', component: Error404Component },
 ]

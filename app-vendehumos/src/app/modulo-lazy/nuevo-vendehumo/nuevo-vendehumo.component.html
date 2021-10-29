@@ -1,0 +1,32 @@
+<h2>Añade un vendehumo</h2>
+
+<form [formGroup]="formulario" (ngSubmit)="guardar()">
+  <div>
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" formControlName="nombre">
+    <pre *ngIf="formulario.controls.nombre.touched && formulario.controls.nombre.invalid">
+      {{formulario.controls.nombre.errors | json}}
+    </pre>
+  </div>
+  <div>
+    <label for="descripcion">Descripcion</label>
+    <!-- <input type="text" id="descripcion" name="descripcion" [(ngModel)]="formulario.descripcion"> -->
+    <input type="text" id="descripcion" formControlName="descripcion">
+    <pre *ngIf="formulario.controls.descripcion.touched && formulario.controls.descripcion.invalid">
+      {{formulario.controls.descripcion.errors | json}}
+    </pre>
+  </div>
+  <div>
+    <label for="rrss">RRSS donde aparece</label>
+    <ng-container *ngFor="let red of rrss">
+      <input type="checkbox" id="rrss" [value]="red" (change)="addRrss($event)">{{red | titlecase}}
+    </ng-container>
+  </div>
+  <div>
+    <label for="categorias">Categorias</label>
+    <ng-container *ngFor="let cat of categorias">
+      <input type="checkbox" id="categorias" [value]="cat" (change)="addCategoria($event)">{{cat | titlecase}}
+    </ng-container>
+  </div>
+  <button type="submit" [disabled]="formulario.invalid">Crear vendehumo</button>
+</form>

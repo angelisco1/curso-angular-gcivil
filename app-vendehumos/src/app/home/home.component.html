@@ -5,6 +5,13 @@
 
 <app-vendehumo
   *ngFor="let vh of listaVendehumos"
-  [vendehumo]="vh"></app-vendehumo>
+  [vendehumo]="vh"
+  (vhActualizado)="actualizarVh($event)"
+  ></app-vendehumo>
 
 <router-outlet></router-outlet>
+
+<!-- {{unTexto}} -->
+<!-- [disabled]=form.invalid -->
+<!-- (click)="fn()" -->
+<!-- [(ngModel)]="propiedad" -->
